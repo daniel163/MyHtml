@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态网页资料库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(160deg, #0b0d21 0%, #14183a 35%, #1a1f4e 65%, #0b0d21 100%);
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* 动态粒子背景 */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* 主容器 */
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 720px;
+        }
+
+        /* 头部标题区 */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero .icon-ring {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #818cf8, #a78bfa);
+            margin-bottom: 1.4rem;
+            box-shadow: 0 8px 36px rgba(129, 140, 248, 0.4);
+        }
+
+        .hero .icon-ring svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            letter-spacing: 0.04em;
+        }
+
+        .hero .subtitle {
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+        }
+
+        .hero .divider {
+            display: inline-block;
+            width: 40px;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #818cf8, #a78bfa);
+            margin-top: 1rem;
+        }
+
+        /* 卡片列表 */
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            padding: 1.25rem 1.5rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.08), rgba(167, 139, 250, 0.08));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.09);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(129, 140, 248, 0.1) inset;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:active {
+            transform: translateY(0);
+            transition: all 0.1s ease;
+        }
+
+        /* 图标区 */
+        .card-icon {
+            flex-shrink: 0;
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.25rem;
+            position: relative;
+            z-index: 1;
+            border-width: 1.5px;
+            border-style: solid;
+        }
+
+        /* 游戏 — 红橙 */
+        .card-icon.game {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+            border-color: rgba(239, 68, 68, 0.5);
+            box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+        }
+
+        /* 文档/科普 — 蓝紫 */
+        .card-icon.doc {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        /* 学习 — 翠绿 */
+        .card-icon.learn {
+            background: linear-gradient(135deg, #22c55e, #14b8a6);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3);
+        }
+
+        /* 收藏 — 琥珀金 */
+        .card-icon.fav {
+            background: linear-gradient(135deg, #f59e0b, #eab308);
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+        }
+
+        /* AI/科技 — 青蓝 */
+        .card-icon.ai {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            border-color: rgba(6, 182, 212, 0.5);
+            box-shadow: 0 4px 16px rgba(6, 182, 212, 0.3);
+        }
+
+        .card-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+        }
+
+        .card-body {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-body .title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-body .desc {
+            margin-top: 0.3rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .card-arrow {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover .card-arrow {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateX(4px);
+        }
+
+        .card-arrow svg {
+            width: 15px;
+            height: 15px;
+            stroke: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 底部 */
+        .footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            color: rgba(255, 255, 255, 0.18);
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .card {
+                padding: 1.1rem 1.2rem;
+            }
+            .card-icon {
+                width: 48px;
+                height: 48px;
+            }
+            .card-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            .card-body .title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 粒子背景 -->
+    <div class="particles" id="particles"></div>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 头部 -->
+        <div class="hero">
+            <div class="icon-ring">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+            </div>
+            <h1>静态网页资料库</h1>
+            <p class="subtitle">STATIC WEB ARCHIVE</p>
+            <span class="divider"></span>
+        </div>
+
+        <!-- 卡片列表 -->
+        <div class="card-list">
+            <!-- 卡片0: 我的收藏 -->
+            <a class="card" href="我的收藏_2026-07-18.html">
+                <div class="card-icon fav">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">我的收藏</div>
+                    <div class="desc">收藏 · 2026-07-18 整理</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片1: GTA5 秘籍 -->
+            <a class="card" href="gta5秘籍.html">
+                <div class="card-icon game">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">GTA5 秘籍大全</div>
+                    <div class="desc">游戏 · 全平台作弊码速查手册</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片2: 中美自来水直饮 -->
+            <a class="card" href="中美自来水直饮差异深度解析.html">
+                <div class="card-icon doc">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">中美自来水直饮差异深度解析</div>
+                    <div class="desc">科普 · 水质标准与直饮文化的跨国对比</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片3: 英语流利对话 -->
+            <a class="card" href="英语流利对话学习方法指南.html">
+                <div class="card-icon learn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">英语流利对话学习方法指南</div>
+                    <div class="desc">学习 · 口语提升技巧与高效练习策略</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片4: 20部高分美剧 -->
+            <a class="card" href="20部高分美剧.html">
+                <div class="card-icon game">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">20部高分美剧推荐</div>
+                    <div class="desc">影音 · 豆瓣 IMDb 高分美剧精选合集</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片5: 冰水 vs 常温水 -->
+            <a class="card" href="冰水 vs 常温水.html">
+                <div class="card-icon doc">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12A10 10 0 0 0 12 2"/>
+                        <path d="M22 12A10 10 0 0 1 2 12"/>
+                        <path d="M12 2v20"/>
+                        <path d="M2 12h20"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">冰水 vs 常温水</div>
+                    <div class="desc">科普 · 喝冰水与常温水的健康影响对比</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片6: 养老产业自由职业指南 -->
+            <a class="card" href="deepseek_html_20260718_468347.html">
+                <div class="card-icon ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">养老产业自由职业全指南</div>
+                    <div class="desc">行业 · 40岁转型养老赛道深度解析</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- 卡片7: 养老服务职业转型指南 -->
+            <a class="card" href="deepseek_html_20260719_95632f.html">
+                <div class="card-icon ai">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 6v6l4 2"/>
+                    </svg>
+                </div>
+                <div class="card-body">
+                    <div class="title">养老服务职业转型全指南</div>
+                    <div class="desc">行业 · 40岁进入养老服务领域实操路径</div>
+                </div>
+                <div class="card-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">Powered by Marvis &nbsp;·&nbsp; 2026</div>
+    </div>
+
+    <!-- 粒子脚本 -->
+    <script>
+        (function() {
+            const container = document.getElementById('particles');
+            const colors = ['rgba(129,140,248,0.3)', 'rgba(167,139,250,0.3)', 'rgba(34,197,94,0.2)', 'rgba(59,130,246,0.25)'];
+
+            for (let i = 0; i < 35; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                dot.style.width = size + 'px';
+                dot.style.height = size + 'px';
+                dot.style.left = Math.random() * 100 + '%';
+                dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+                dot.style.animationDuration = (Math.random() * 14 + 8) + 's';
+                dot.style.animationDelay = Math.random() * 12 + 's';
+                container.appendChild(dot);
+            }
+        })();
+    </script>
+
+</body>
+</html>

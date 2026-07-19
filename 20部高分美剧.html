@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20部必看高分美剧 | 经典神剧珍藏榜单</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+        .card-gradient {
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+        .rating-star {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .genre-tag {
+            background: linear-gradient(90deg, rgba(139, 92, 246, 0.3), rgba(59, 130, 246, 0.3));
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+        .glow-text {
+            text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: reveal 0.8s ease forwards;
+        }
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .rank-badge {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+        }
+        .rank-badge.top3 {
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #f59e0b 100%);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #8b5cf6, #6366f1);
+            border-radius: 4px;
+        }
+        .poster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+        }
+        .card-hover:hover .poster-img {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <!-- Header -->
+    <header class="relative py-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(139,92,246,0.15),transparent_50%)]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <p class="text-purple-300 text-sm tracking-[0.3em] uppercase mb-4">Curated Collection</p>
+            <h1 class="title-font text-5xl md:text-7xl font-bold mb-6 glow-text">
+                20部必看高分美剧
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                横跨犯罪、剧情、喜剧、科幻四大类型<br>
+                精选 IMDb 与豆瓣双平台口碑封神之作
+            </p>
+            
+            <div class="flex justify-center gap-8 mt-10 flex-wrap">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-400">20</div>
+                    <div class="text-gray-400 text-sm">精选剧集</div>
+                </div>
+                <div class="w-px bg-gray-600 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-400">9.0+</div>
+                    <div class="text-gray-400 text-sm">平均评分</div>
+                </div>
+                <div class="w-px bg-gray-600 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-400">8+</div>
+                    <div class="text-gray-400 text-sm">题材类型</div>
+                </div>
+                <div class="w-px bg-gray-600 hidden md:block"></div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-yellow-400">100%</div>
+                    <div class="text-gray-400 text-sm">口碑保证</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Filter Tags -->
+    <div class="max-w-6xl mx-auto px-6 mb-12">
+        <div class="flex flex-wrap justify-center gap-3">
+            <button class="genre-tag px-4 py-2 rounded-full text-sm text-purple-200 hover:bg-purple-600/40 transition-all" onclick="filterShows('all')">全部</button>
+            <button class="genre-tag px-4 py-2 rounded-full text-sm text-purple-200 hover:bg-purple-600/40 transition-all" onclick="filterShows('crime')">犯罪剧情</button>
+            <button class="genre-tag px-4 py-2 rounded-full text-sm text-purple-200 hover:bg-purple-600/40 transition-all" onclick="filterShows('comedy')">喜剧家庭</button>
+            <button class="genre-tag px-4 py-2 rounded-full text-sm text-purple-200 hover:bg-purple-600/40 transition-all" onclick="filterShows('scifi')">科幻悬疑</button>
+            <button class="genre-tag px-4 py-2 rounded-full text-sm text-purple-200 hover:bg-purple-600/40 transition-all" onclick="filterShows('drama')">经典剧情</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 pb-20">
+        <div id="shows-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Cards will be inserted by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-10 px-6">
+        <div class="max-w-6xl mx-auto text-center text-gray-400 text-sm">
+            <p>数据来源：IMDb · 豆瓣 · 艾美奖获奖记录</p>
+            <p class="mt-2">排名综合参考评分、影响力与业界口碑</p>
+        </div>
+    </footer>
+
+    <script>
+        const shows = [
+            {
+                rank: 1,
+                title: "绝命毒师",
+                titleEn: "Breaking Bad",
+                years: "2008-2013",
+                seasons: "5季",
+                genre: "crime",
+                genreLabel: "犯罪 / 剧情",
+                imdb: 9.5,
+                douban: 9.7,
+                description: "高中化学老师老白确诊癌症后，为给家人留下财产，利用专业知识走上制毒之路，一步步蜕变为冷酷的毒枭海森堡。",
+                highlight: "吉尼斯认证全球评分最高剧集，16座艾美奖",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg"
+            },
+            {
+                rank: 2,
+                title: "火线",
+                titleEn: "The Wire",
+                years: "2002-2008",
+                seasons: "5季",
+                genre: "crime",
+                genreLabel: "犯罪 / 社会",
+                imdb: 9.3,
+                douban: 9.7,
+                description: "以巴尔的摩为舞台，从毒品交易切入，逐层展现码头、市政、教育、媒体等社会系统的运转与溃败。",
+                highlight: "美剧史上最深刻的社会史诗",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/504/1260189.jpg"
+            },
+            {
+                rank: 3,
+                title: "黑道家族",
+                titleEn: "The Sopranos",
+                years: "1999-2007",
+                seasons: "6季",
+                genre: "crime",
+                genreLabel: "黑帮 / 心理",
+                imdb: 9.2,
+                douban: 9.4,
+                description: "新泽西黑帮老大托尼一边管理犯罪家族，一边应对郊区家庭生活，因焦虑症开始接受心理治疗。",
+                highlight: "美剧黄金时代开山之作",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/4/11341.jpg"
+            },
+            {
+                rank: 4,
+                title: "风骚律师",
+                titleEn: "Better Call Saul",
+                years: "2015-2022",
+                seasons: "6季",
+                genre: "crime",
+                genreLabel: "律政 / 犯罪",
+                imdb: 9.0,
+                douban: 9.7,
+                description: "《绝命毒师》前传，讲述心地善良的小人物吉米·麦吉尔如何一步步堕落为游走在法律边缘的索尔·古德曼。",
+                highlight: "超越前作的神级衍生剧",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/501/1253515.jpg"
+            },
+            {
+                rank: 5,
+                title: "权力的游戏",
+                titleEn: "Game of Thrones",
+                years: "2011-2019",
+                seasons: "8季",
+                genre: "drama",
+                genreLabel: "奇幻 / 史诗",
+                imdb: 9.2,
+                douban: 9.5,
+                description: "维斯特洛大陆九大家族争夺铁王座，而异鬼大军正从北方逼近。权谋、背叛、巨龙与魔法交织的史诗。",
+                highlight: "全球现象级奇幻巨制",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/498/1245274.jpg"
+            },
+            {
+                rank: 6,
+                title: "兄弟连",
+                titleEn: "Band of Brothers",
+                years: "2001",
+                seasons: "10集",
+                genre: "drama",
+                genreLabel: "战争 / 历史",
+                imdb: 9.4,
+                douban: 9.6,
+                description: "斯皮尔伯格与汤姆·汉克斯联手打造，真实还原二战中美国101空降师E连从诺曼底登陆到战争结束的历程。",
+                highlight: "战争剧天花板，真实老兵口述改编",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/80/201679.jpg"
+            },
+            {
+                rank: 7,
+                title: "切尔诺贝利",
+                titleEn: "Chernobyl",
+                years: "2019",
+                seasons: "5集",
+                genre: "drama",
+                genreLabel: "灾难 / 历史",
+                imdb: 9.4,
+                douban: 9.6,
+                description: "还原1986年乌克兰切尔诺贝利核爆炸事件，揭露谎言背后的牺牲与真相，展现制度与人的复杂博弈。",
+                highlight: "艾美奖限定剧大满贯",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/193/482599.jpg"
+            },
+            {
+                rank: 8,
+                title: "老友记",
+                titleEn: "Friends",
+                years: "1994-2004",
+                seasons: "10季",
+                genre: "comedy",
+                genreLabel: "情景喜剧",
+                imdb: 8.9,
+                douban: 9.8,
+                description: "纽约曼哈顿的六个好友——瑞秋、罗斯、莫妮卡、钱德勒、菲比、乔伊，相伴走过十年的欢笑与成长。",
+                highlight: "全球最具影响力情景喜剧",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/41/104565.jpg"
+            },
+            {
+                rank: 9,
+                title: "真探 第一季",
+                titleEn: "True Detective S1",
+                years: "2014",
+                seasons: "8集",
+                genre: "scifi",
+                genreLabel: "悬疑 / 犯罪",
+                imdb: 8.9,
+                douban: 9.3,
+                description: "路易斯安那州两位性格迥异的警探，跨越十七年追踪一起带有宗教仪式感的连环谋杀案。",
+                highlight: "哲学深度与悬疑氛围的完美结合",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/490/1226764.jpg"
+            },
+            {
+                rank: 10,
+                title: "广告狂人",
+                titleEn: "Mad Men",
+                years: "2007-2015",
+                seasons: "7季",
+                genre: "drama",
+                genreLabel: "年代 / 职场",
+                imdb: 8.7,
+                douban: 9.3,
+                description: "60年代纽约麦迪逊大道，天才广告人唐·德雷柏在黄金时代的辉煌与空虚，以及整个行业的变迁。",
+                highlight: "四连艾美奖最佳剧情剧",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/2/5589.jpg"
+            },
+            {
+                rank: 11,
+                title: "怪奇物语",
+                titleEn: "Stranger Things",
+                years: "2016-至今",
+                seasons: "4季",
+                genre: "scifi",
+                genreLabel: "科幻 / 悬疑",
+                imdb: 8.7,
+                douban: 9.1,
+                description: "80年代印第安纳小镇，一个男孩神秘失踪后，朋友们发现了政府秘密实验、逆世界怪物和超能力少女。",
+                highlight: "网飞全球现象级爆款",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/595/1489169.jpg"
+            },
+            {
+                rank: 12,
+                title: "毒枭",
+                titleEn: "Narcos",
+                years: "2015-2017",
+                seasons: "3季",
+                genre: "crime",
+                genreLabel: "犯罪 / 传记",
+                imdb: 8.8,
+                douban: 9.3,
+                description: "真实事件改编，讲述哥伦比亚大毒枭巴勃罗·埃斯科瓦尔从走私贩到富可敌国的毒品皇帝的兴衰史。",
+                highlight: "纪录片式拍摄，90%情节有原型",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/498/1246087.jpg"
+            },
+            {
+                rank: 13,
+                title: "六尺之下",
+                titleEn: "Six Feet Under",
+                years: "2001-2005",
+                seasons: "5季",
+                genre: "drama",
+                genreLabel: "家庭 / 哲学",
+                imdb: 8.7,
+                douban: 9.3,
+                description: "经营殡仪馆的费舍一家，每集以一场死亡开场，在处理逝者的过程中探讨生命、死亡与存在的意义。",
+                highlight: "美剧史上最伟大的结局",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/2/5480.jpg"
+            },
+            {
+                rank: 14,
+                title: "疑犯追踪",
+                titleEn: "Person of Interest",
+                years: "2011-2016",
+                seasons: "5季",
+                genre: "scifi",
+                genreLabel: "科幻 / 悬疑",
+                imdb: 8.4,
+                douban: 9.6,
+                description: "天才程序员芬奇创造了能预测犯罪的AI机器，与前特工里瑟联手拯救号码背后的普通人。",
+                highlight: "AI伦理与监控议题的神预言",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"
+            },
+            {
+                rank: 15,
+                title: "摩登家庭",
+                titleEn: "Modern Family",
+                years: "2009-2020",
+                seasons: "11季",
+                genre: "comedy",
+                genreLabel: "家庭 / 喜剧",
+                imdb: 8.5,
+                douban: 9.6,
+                description: "伪纪录片形式拍摄的三个典型美国家庭——传统家庭、同性伴侣、老夫少妻，温情又爆笑。",
+                highlight: "五连艾美奖最佳喜剧",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/359/898320.jpg"
+            },
+            {
+                rank: 16,
+                title: "无耻之徒",
+                titleEn: "Shameless",
+                years: "2011-2021",
+                seasons: "11季",
+                genre: "comedy",
+                genreLabel: "喜剧 / 剧情",
+                imdb: 8.6,
+                douban: 9.6,
+                description: "芝加哥南区加拉格一家，酒鬼父亲和六个孩子在贫穷与混乱中野蛮生长，狼狈却热烈地活着。",
+                highlight: "底层生活的粗粝与温柔",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/486/1215661.jpg"
+            },
+            {
+                rank: 17,
+                title: "我们这一天",
+                titleEn: "This Is Us",
+                years: "2016-2022",
+                seasons: "6季",
+                genre: "comedy",
+                genreLabel: "家庭 / 温情",
+                imdb: 8.7,
+                douban: 9.5,
+                description: "同一天出生的三胞胎兄妹，跨越时空展现他们的成长与家庭，用细腻笔触描绘亲情与人生。",
+                highlight: "治愈系家庭剧天花板",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/401/1003345.jpg"
+            },
+            {
+                rank: 18,
+                title: "继承之战",
+                titleEn: "Succession",
+                years: "2018-2023",
+                seasons: "4季",
+                genre: "drama",
+                genreLabel: "商战 / 家庭",
+                imdb: 8.6,
+                douban: 9.3,
+                description: "传媒大亨罗根·罗伊年迈后，四个子女为争夺帝国继承权展开明争暗斗，豪门家族的权力游戏。",
+                highlight: "艾美奖横扫，当代豪门浮世绘",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/453/1134275.jpg"
+            },
+            {
+                rank: 19,
+                title: "办公室(美版)",
+                titleEn: "The Office US",
+                years: "2005-2013",
+                seasons: "9季",
+                genre: "comedy",
+                genreLabel: "职场 / 喜剧",
+                imdb: 9.0,
+                douban: 9.3,
+                description: "伪纪录片形式，斯克兰顿一家纸品分公司里，奇葩老板和员工们日常又荒诞的办公室生活。",
+                highlight: "美式尴尬喜剧巅峰之作",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/481/1204342.jpg"
+            },
+            {
+                rank: 20,
+                title: "暗黑",
+                titleEn: "Dark",
+                years: "2017-2020",
+                seasons: "3季",
+                genre: "scifi",
+                genreLabel: "科幻 / 悬疑",
+                imdb: 8.8,
+                douban: 9.3,
+                description: "德国小镇温登，两个孩子失踪后牵出四代人跨越时空的秘密，时间循环与因果宿命的烧脑神作。",
+                highlight: "德式严谨的时间悖论神作",
+                poster: "https://static.tvmaze.com/uploads/images/original_untouched/504/1262352.jpg"
+            }
+        ];
+
+        function createCard(show, index) {
+            const isTop3 = show.rank <= 3;
+            return `
+                <div class="show-card card-gradient rounded-2xl overflow-hidden card-hover scroll-reveal" 
+                     data-genre="${show.genre}"
+                     style="animation-delay: ${index * 0.05}s">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="${show.poster}" alt="${show.title}" class="poster-img">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                        
+                        <div class="absolute top-3 left-3">
+                            <div class="rank-badge ${isTop3 ? 'top3' : ''} w-10 h-10 rounded-full flex items-center justify-center font-bold text-gray-900 text-sm shadow-lg">
+                                #${show.rank}
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-3 right-3 flex gap-2">
+                            <span class="bg-black/50 backdrop-blur-sm px-2 py-1 rounded text-xs text-yellow-400 font-medium">
+                                IMDb ${show.imdb}
+                            </span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-xl font-bold mb-1">${show.title}</h3>
+                            <p class="text-gray-300 text-sm">${show.titleEn}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="genre-tag px-3 py-1 rounded-full text-xs text-purple-200">
+                                ${show.genreLabel}
+                            </span>
+                            <span class="text-gray-400 text-xs">${show.years} · ${show.seasons}</span>
+                        </div>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="rating-star font-bold text-lg">★</span>
+                            <span class="text-white font-semibold">豆瓣 ${show.douban}</span>
+                        </div>
+                        
+                        <p class="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                            ${show.description}
+                        </p>
+                        
+                        <div class="border-t border-white/10 pt-3">
+                            <p class="text-xs text-purple-300">
+                                ✦ ${show.highlight}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderShows(showsToRender) {
+            const grid = document.getElementById('shows-grid');
+            grid.innerHTML = showsToRender.map((show, index) => createCard(show, index)).join('');
+        }
+
+        function filterShows(genre) {
+            if (genre === 'all') {
+                renderShows(shows);
+            } else {
+                const filtered = shows.filter(show => show.genre === genre);
+                renderShows(filtered);
+            }
+        }
+
+        // Initial render
+        renderShows(shows);
+    </script>
+</body>
+</html>

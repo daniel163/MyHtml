@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA V 故事模式 作弊码大全 | PC版完整收录</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #080c10;
+  --bg2:      #0d1117;
+  --bg3:      #111820;
+  --border:   #1c2530;
+  --border2:  #243040;
+  --gold:     #f0b429;
+  --gold2:    #ffd166;
+  --red:      #e63946;
+  --green:    #06d6a0;
+  --blue:     #4cc9f0;
+  --purple:   #b5179e;
+  --orange:   #fb8500;
+  --white:    #e8edf2;
+  --muted:    #6b7a8d;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Barlow Condensed', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240,180,41,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(76,201,240,.08) 0%, transparent 60%),
+    var(--bg);
+}
+
+/* city silhouette */
+.hero-city {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background:
+    linear-gradient(to top, rgba(240,180,41,.06) 0%, transparent 100%);
+  overflow: hidden;
+}
+.hero-city::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 180'%3E%3Cpath fill='%230d1117' d='M0,180 L0,120 L40,120 L40,80 L60,80 L60,60 L80,60 L80,80 L100,80 L100,40 L120,40 L120,80 L140,80 L140,100 L160,100 L160,60 L180,60 L180,40 L200,40 L200,60 L220,60 L220,100 L240,100 L240,70 L260,70 L260,50 L280,50 L280,30 L300,30 L300,50 L320,50 L320,70 L340,70 L340,90 L360,90 L360,50 L380,50 L380,70 L400,70 L400,110 L420,110 L420,80 L440,80 L440,60 L460,60 L460,40 L480,40 L480,60 L500,60 L500,80 L520,80 L520,100 L540,100 L540,60 L560,60 L560,80 L580,80 L580,50 L600,50 L600,30 L620,30 L620,50 L640,50 L640,80 L660,80 L660,100 L680,100 L680,70 L700,70 L700,50 L720,50 L720,70 L740,70 L740,90 L760,90 L760,60 L780,60 L780,40 L800,40 L800,60 L820,60 L820,80 L840,80 L840,100 L860,100 L860,70 L880,70 L880,50 L900,50 L900,30 L920,30 L920,50 L940,50 L940,70 L960,70 L960,90 L980,90 L980,60 L1000,60 L1000,80 L1020,80 L1020,100 L1040,100 L1040,70 L1060,70 L1060,50 L1080,50 L1080,70 L1100,70 L1100,90 L1120,90 L1120,60 L1140,60 L1140,40 L1160,40 L1160,60 L1180,60 L1180,80 L1200,80 L1200,100 L1220,100 L1220,70 L1240,70 L1240,50 L1260,50 L1260,70 L1280,70 L1280,90 L1300,90 L1300,110 L1320,110 L1320,80 L1340,80 L1340,60 L1360,60 L1360,80 L1380,80 L1380,100 L1400,100 L1400,120 L1440,120 L1440,180 Z'/%3E%3C/svg%3E") bottom/cover no-repeat;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(240,180,41,.12);
+  border: 1px solid rgba(240,180,41,.3);
+  color: var(--gold);
+  font-size: .8rem;
+  letter-spacing: 3px;
+  padding: 6px 18px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.hero-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 14vw, 11rem);
+  letter-spacing: 6px;
+  line-height: .85;
+  background: linear-gradient(180deg, #fff 0%, var(--gold) 60%, #a07010 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px rgba(240,180,41,.4));
+  margin-bottom: 4px;
+}
+
+.hero-sub {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2.8rem);
+  letter-spacing: 14px;
+  color: var(--white);
+  opacity: .7;
+  margin-bottom: 32px;
+}
+
+.hero-line {
+  width: 280px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 32px;
+}
+
+.hero-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.pill {
+  padding: 6px 16px;
+  border: 1px solid var(--border2);
+  font-size: .8rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.pill.hot { border-color: rgba(240,180,41,.4); color: var(--gold); }
+
+.hero-counts {
+  display: flex;
+  gap: 56px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hc { text-align: center; }
+.hc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(240,180,41,.5);
+}
+.hc-label {
+  font-size: .75rem;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: .7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: float 2.5s ease-in-out infinite;
+}
+.scroll-arrow::after { content: '↓'; font-size: 1.2rem; color: var(--gold); }
+@keyframes float {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ── STICKY NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(8,12,16,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  padding: 14px 20px 14px 0;
+  border-right: 1px solid var(--border);
+  margin-right: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav a {
+  display: inline-block;
+  padding: 14px 14px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .82rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color .2s;
+  border-bottom: 2px solid transparent;
+  font-weight: 600;
+}
+.nav a:hover { color: var(--white); }
+.nav a.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── MAIN ── */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 20px 80px;
+}
+
+/* ── HOW TO USE ── */
+.howto {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  padding: 24px 28px;
+  margin-bottom: 56px;
+}
+.howto-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.howto-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.method {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.method-num {
+  width: 28px;
+  height: 28px;
+  background: rgba(240,180,41,.15);
+  border: 1px solid rgba(240,180,41,.3);
+  color: var(--gold);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.method-text { font-size: .9rem; color: #aab; line-height: 1.5; }
+.method-text strong { color: var(--white); }
+.howto-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.note-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(230,57,70,.1);
+  border: 1px solid rgba(230,57,70,.25);
+  color: #e88;
+  font-size: .78rem;
+  letter-spacing: 1px;
+}
+.note-chip::before { content: '⚠'; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 64px; }
+
+.sec-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.sec-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+}
+.sec-desc {
+  font-size: .8rem;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+/* ── CHEAT GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 8px;
+}
+.grid.single { grid-template-columns: 1fr; }
+
+/* ── CHEAT CARD ── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  transition: border-color .2s, background .2s;
+  position: relative;
+  overflow: hidden;
+}
+.card::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.card:hover { border-color: var(--border2); background: var(--bg3); }
+.card:hover::after { opacity: 1; }
+.card:hover .code { color: var(--gold2); }
+
+/* featured card */
+.card.feat {
+  border-color: rgba(240,180,41,.25);
+  background: linear-gradient(135deg, #0d1117 0%, #141a10 100%);
+}
+.card.feat::after { opacity: .6; }
+.card.feat .code { color: var(--gold); }
+
+/* ── CODE BLOCK ── */
+.code-wrap { flex-shrink: 0; }
+.code {
+  font-family: var(--mono);
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: .5px;
+  transition: color .2s;
+  display: block;
+  line-height: 1.3;
+}
+.phone {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--muted);
+  margin-top: 4px;
+  display: block;
+  letter-spacing: .5px;
+}
+
+/* ── CARD BODY ── */
+.card-body { flex: 1; min-width: 0; }
+.card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: .5px;
+  line-height: 1.2;
+}
+.card-desc {
+  font-size: .85rem;
+  color: #8a9ab0;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.card-desc strong { color: #c8d8e8; }
+
+/* badge */
+.badge {
+  display: inline-block;
+  padding: 1px 7px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.badge.hot  { background: rgba(240,180,41,.15); color: var(--gold); border: 1px solid rgba(240,180,41,.3); }
+.badge.new  { background: rgba(6,214,160,.12);  color: var(--green); border: 1px solid rgba(6,214,160,.3); }
+.badge.warn { background: rgba(230,57,70,.12);  color: var(--red);   border: 1px solid rgba(230,57,70,.3); }
+.badge.tip  { background: rgba(76,201,240,.12); color: var(--blue);  border: 1px solid rgba(76,201,240,.3); }
+
+/* ── QUICK REF TABLE ── */
+.qref {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+.qref-head {
+  background: rgba(240,180,41,.08);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.qref table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.qref th {
+  padding: 10px 16px;
+  text-align: left;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255,255,255,.02);
+}
+.qref td {
+  padding: 9px 16px;
+  font-size: .88rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.qref tr:last-child td { border-bottom: none; }
+.qref tr:hover td { background: rgba(255,255,255,.02); }
+.qref .td-code {
+  font-family: var(--mono);
+  font-size: .82rem;
+  color: var(--green);
+  font-weight: 700;
+}
+.qref .td-phone {
+  font-family: var(--mono);
+  font-size: .78rem;
+  color: var(--muted);
+}
+.qref .td-cat span {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* category colors */
+.cat-player  { background: rgba(6,214,160,.12);  color: var(--green);  border: 1px solid rgba(6,214,160,.25); }
+.cat-weapon  { background: rgba(230,57,70,.12);  color: var(--red);    border: 1px solid rgba(230,57,70,.25); }
+.cat-vehicle { background: rgba(76,201,240,.12); color: var(--blue);   border: 1px solid rgba(76,201,240,.25); }
+.cat-world   { background: rgba(181,23,158,.12); color: #d060c0;       border: 1px solid rgba(181,23,158,.25); }
+.cat-wanted  { background: rgba(251,133,0,.12);  color: var(--orange); border: 1px solid rgba(251,133,0,.25); }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 36px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .8rem;
+  letter-spacing: 1px;
+}
+.footer em { color: var(--gold); font-style: normal; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #2a3545; border-radius: 3px; }
+
+/* ── FADE IN ── */
+.fi { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+.fi.vis { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero-counts { gap: 28px; }
+  .code { font-size: .78rem; }
+  .qref { overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-city"></div>
+
+  <div class="hero-tag">🎮 故事模式专用 · PC版完整收录</div>
+  <div class="hero-logo">GTA V</div>
+  <div class="hero-sub">侠盗猎车手 5</div>
+  <div class="hero-line"></div>
+
+  <div class="hero-pills">
+    <span class="pill hot">故事模式</span>
+    <span class="pill">PC / PS / Xbox</span>
+    <span class="pill">键盘输入 + 手机拨号</span>
+    <span class="pill">双重作弊方式</span>
+  </div>
+
+  <div class="hero-counts">
+    <div class="hc"><div class="hc-num">35</div><div class="hc-label">作弊码总量</div></div>
+    <div class="hc"><div class="hc-num">5</div><div class="hc-label">功能分类</div></div>
+    <div class="hc"><div class="hc-num">2</div><div class="hc-label">输入方式</div></div>
+    <div class="hc"><div class="hc-num">2013</div><div class="hc-label">游戏发行年</div></div>
+  </div>
+
+  <div class="scroll-arrow">向下滚动</div>
+</section>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">GTA V</div>
+    <a href="#howto">使用方法</a>
+    <a href="#player">玩家状态</a>
+    <a href="#weapon">武器弹药</a>
+    <a href="#vehicle">召唤载具</a>
+    <a href="#world">世界效果</a>
+    <a href="#wanted">通缉系统</a>
+    <a href="#quickref">速查表</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<div class="main">
+
+  <!-- HOW TO USE -->
+  <div class="howto fi" id="howto">
+    <div class="howto-title">📖 作弊码使用方法</div>
+    <div class="howto-methods">
+      <div class="method">
+        <div class="method-num">1</div>
+        <div class="method-text">
+          <strong>键盘控制台输入</strong><br>
+          游戏中按 <strong>~ 键</strong>（ESC下方），输入作弊码后按 <strong>回车</strong> 确认。屏幕左上角显示"作弊功能已激活"即成功。
+        </div>
+      </div>
+      <div class="method">
+        <div class="method-num">2</div>
+        <div class="method-text">
+          <strong>手机拨号输入</strong><br>
+          游戏中拿出手机（↑键），进入拨号界面，输入对应电话号码拨出即可激活。
+        </div>
+      </div>
+      <div class="method">
+        <div class="method-num">3</div>
+        <div class="method-text">
+          <strong>直接键盘输入</strong><br>
+          部分版本支持在游戏中直接按键盘字母键输入代码（类似罪恶都市），无需打开控制台。
+        </div>
+      </div>
+    </div>
+    <div class="howto-notes">
+      <span class="note-chip">任务进行中作弊码无效，开始任务后效果自动消失</span>
+      <span class="note-chip">使用作弊码后无法解锁成就/奖杯</span>
+      <span class="note-chip">存档前建议关闭作弊效果，避免影响游戏进度</span>
+    </div>
+  </div>
+
+  <!-- ═══ 玩家状态 ═══ -->
+  <div class="section fi" id="player">
+    <div class="sec-header">
+      <div class="sec-icon">💊</div>
+      <div>
+        <div class="sec-title">玩家状态类</div>
+        <div class="sec-desc">生命值 · 护甲 · 能力 · 特殊状态</div>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">TURTLE</span>
+          <span class="phone">1-999-887-853</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">加满血量与护甲 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">立即恢复<strong>满血量</strong>和<strong>满护甲</strong>，同时修复当前驾驶的载具。危急时刻的救命码。</div>
+        </div>
+      </div>
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">PAINKILLER</span>
+          <span class="phone">1-999-724-654-5537</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">无敌模式（5分钟）<span class="badge hot">最常用</span></div>
+          <div class="card-desc">激活后<strong>5分钟内无敌</strong>，免疫所有伤害。时间到后自动失效，可重复输入续时。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">POWERUP</span>
+          <span class="phone">1-999-769-3787</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">特殊能力立即充满</div>
+          <div class="card-desc">立即充满角色的<strong>特殊技能槽</strong>。迈克尔的慢动作、富兰克林的驾驶慢动作、崔佛的狂暴模式均可使用。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">CATCHME</span>
+          <span class="phone">1-999-228-8463</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">超级奔跑速度</div>
+          <div class="card-desc">角色奔跑速度<strong>大幅提升</strong>，可以快速穿越地图，逃脱追捕或赶路时非常实用。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">GOTGILLS</span>
+          <span class="phone">1-999-468-44557</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">超级游泳速度</div>
+          <div class="card-desc">角色游泳速度<strong>大幅提升</strong>，在水中如鱼得水，快速穿越海洋和河流。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">HOPTOIT</span>
+          <span class="phone">1-999-467-8648</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">超级跳跃</div>
+          <div class="card-desc">角色跳跃高度<strong>大幅提升</strong>，可以跳上高楼或越过障碍物，配合降落伞使用效果更佳。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">SKYFALL</span>
+          <span class="phone">1-999-759-3255</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">从高空坠落 <span class="badge tip">趣味</span></div>
+          <div class="card-desc">角色瞬间被传送到<strong>高空</strong>，开始自由落体。建议提前准备好降落伞（SKYDIVE），否则会摔死。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">LIQUOR</span>
+          <span class="phone">1-999-547-861</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">醉酒模式 <span class="badge tip">趣味</span></div>
+          <div class="card-desc">角色进入<strong>醉酒状态</strong>，视角晃动，行走不稳，操控变得困难。再次输入可取消。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">DEADEYE</span>
+          <span class="phone">1-999-332-3393</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">瞄准时慢动作 <span class="badge new">叠加</span></div>
+          <div class="card-desc">瞄准时时间<strong>大幅减慢</strong>，可输入多次叠加效果（最多4次），第5次输入取消。精准射击神器。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ 武器弹药 ═══ -->
+  <div class="section fi" id="weapon">
+    <div class="sec-header">
+      <div class="sec-icon">🔫</div>
+      <div>
+        <div class="sec-title">武器弹药类</div>
+        <div class="sec-desc">获得武器 · 特殊弹药 · 装备道具</div>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">TOOLUP</span>
+          <span class="phone">1-999-866-587</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">获得全套武器弹药 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">一次性获得<strong>各类常规武器</strong>及充足弹药，包括手枪、步枪、霰弹枪、狙击枪、RPG等全套装备。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">SKYDIVE</span>
+          <span class="phone">1-999-759-3483</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">获得降落伞</div>
+          <div class="card-desc">立即获得一个<strong>降落伞</strong>，装备后从高处跳下时按 <strong>X 键</strong>打开。配合SKYFALL使用必备。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">INCENDIARY</span>
+          <span class="phone">1-999-462-363-4279</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">烈焰子弹 <span class="badge warn">危险</span></div>
+          <div class="card-desc">所有武器子弹变为<strong>燃烧弹</strong>，击中目标后引发火焰，可点燃车辆和人员，造成持续伤害。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">HIGHEX</span>
+          <span class="phone">1-999-444-439</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">爆炸子弹 <span class="badge warn">危险</span></div>
+          <div class="card-desc">所有武器子弹变为<strong>爆炸弹</strong>，每发子弹击中后产生爆炸，威力极大，可轻松摧毁车辆。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">HOTHANDS</span>
+          <span class="phone">1-999-4684-2637</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">爆炸近战攻击 <span class="badge tip">趣味</span></div>
+          <div class="card-desc">每次<strong>近战攻击</strong>都会产生爆炸效果，拳打脚踢即可炸飞敌人和车辆，娱乐性极强。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ 召唤载具 ═══ -->
+  <div class="section fi" id="vehicle">
+    <div class="sec-header">
+      <div class="sec-icon">🚗</div>
+      <div>
+        <div class="sec-title">召唤载具类</div>
+        <div class="sec-desc">在当前位置生成各类载具</div>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">BUZZOFF</span>
+          <span class="phone">1-999-289-9633</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">秃鹰武装直升机 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">召唤一架<strong>Buzzard秃鹰武装直升机</strong>，配备机炮和火箭发射器，空中作战利器，机动性极强。</div>
+        </div>
+      </div>
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">RAPIDGT</span>
+          <span class="phone">1-999-727-4348</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Rapid GT 跑车 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">召唤一辆<strong>Rapid GT 双门跑车</strong>，速度快、操控好，是故事模式中最实用的代步跑车之一。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">COMET</span>
+          <span class="phone">1-999-266-38</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Comet 彗星跑车</div>
+          <div class="card-desc">召唤一辆<strong>Comet 双门跑车</strong>，外形酷似保时捷，性能优秀，适合高速公路驾驶。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">ROCKET</span>
+          <span class="phone">1-999-762-538</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">PCJ-600 摩托车</div>
+          <div class="card-desc">召唤一辆<strong>PCJ-600 高性能摩托车</strong>，速度极快，穿越城市街道如鱼得水，适合快速移动。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">OFFROAD</span>
+          <span class="phone">1-999-633-7623</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Sanchez 越野摩托</div>
+          <div class="card-desc">召唤一辆<strong>Sanchez 越野摩托车</strong>，适合山地和越野地形，爬山涉水无所不能。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">BANDIT</span>
+          <span class="phone">1-999-226-348</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">BMX 小轮车</div>
+          <div class="card-desc">召唤一辆<strong>BMX 小轮自行车</strong>，可以做各种特技动作，在城市中穿行灵活，趣味性十足。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">BARNSTORM</span>
+          <span class="phone">1-999-2276-78676</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Stunt Plane 特技飞机</div>
+          <div class="card-desc">召唤一架<strong>特技飞机</strong>，机动性极强，可以做各种高难度特技动作，适合空中表演。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">TRASHED</span>
+          <span class="phone">1-999-872-433</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Trashmaster 垃圾车</div>
+          <div class="card-desc">召唤一辆<strong>大型垃圾车</strong>，体积庞大，可以横冲直撞清除道路上的障碍物和车辆。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">VINEWOOD</span>
+          <span class="phone">1-999-846-39663</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">Stretch 豪华加长轿车</div>
+          <div class="card-desc">召唤一辆<strong>豪华加长礼车</strong>，外观气派，适合在洛圣都街头彰显身份，体验明星待遇。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ 世界效果 ═══ -->
+  <div class="section fi" id="world">
+    <div class="sec-header">
+      <div class="sec-icon">🌍</div>
+      <div>
+        <div class="sec-title">世界效果类</div>
+        <div class="sec-desc">天气 · 物理 · 时间 · 环境</div>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">MAKEITRAIN</span>
+          <span class="phone">1-999-625-348-7246</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">循环切换天气 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">每次输入切换到下一种天气，循环顺序：<strong>晴天 → 多云 → 雾天 → 阴天 → 雨天 → 雷雨 → 下雪</strong>（共8种）。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">FLOATER</span>
+          <span class="phone">1-999-356-2837</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">月球低重力 <span class="badge tip">趣味</span></div>
+          <div class="card-desc">激活<strong>月球引力</strong>，跳跃后按 <strong>O 键</strong>可以在空中漂浮。进入载具后也能体验低重力飞行效果。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">SNOWDAY</span>
+          <span class="phone">1-999-766-9329</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">车胎打滑（漂移模式）<span class="badge tip">趣味</span></div>
+          <div class="card-desc">所有车辆<strong>车胎极度打滑</strong>，如同在冰面上行驶，操控变得困难，但漂移效果极佳，适合漂移爱好者。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">SLOWMO</span>
+          <span class="phone">1-999-756-966</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">全局慢动作 <span class="badge new">叠加</span></div>
+          <div class="card-desc">游戏整体进入<strong>慢动作</strong>，可输入多次叠加（最多3次），第4次输入取消。与DEADEYE不同，影响整个世界。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ 通缉系统 ═══ -->
+  <div class="section fi" id="wanted">
+    <div class="sec-header">
+      <div class="sec-icon">🚔</div>
+      <div>
+        <div class="sec-title">通缉系统类</div>
+        <div class="sec-desc">控制警察通缉等级</div>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <div class="card feat">
+        <div class="code-wrap">
+          <span class="code">LAWYERUP</span>
+          <span class="phone">1-999-529-93787</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">降低通缉等级 <span class="badge hot">最常用</span></div>
+          <div class="card-desc">每次输入<strong>降低一颗通缉星</strong>，多次输入可完全消除通缉。被警察追杀时的必备逃脱码。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="code-wrap">
+          <span class="code">FUGITIVE</span>
+          <span class="phone">1-999-3844-8483</span>
+        </div>
+        <div class="card-body">
+          <div class="card-name">提升通缉等级</div>
+          <div class="card-desc">每次输入<strong>增加一颗通缉星</strong>，想体验高强度警察追捕时使用，最高可达5星通缉。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ QUICK REF ═══ -->
+  <div class="qref fi" id="quickref">
+    <div class="qref-head">⚡ 速查对照表 — 全部35个作弊码一览</div>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>作弊码</th>
+          <th>效果说明</th>
+          <th>电话号码</th>
+          <th>分类</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="td-code">TURTLE</td><td>加满血量与护甲（修车）</td><td class="td-phone">1-999-887-853</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">PAINKILLER</td><td>无敌模式（5分钟）</td><td class="td-phone">1-999-724-654-5537</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">POWERUP</td><td>特殊能力立即充满</td><td class="td-phone">1-999-769-3787</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">CATCHME</td><td>超级奔跑速度</td><td class="td-phone">1-999-228-8463</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">GOTGILLS</td><td>超级游泳速度</td><td class="td-phone">1-999-468-44557</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">HOPTOIT</td><td>超级跳跃</td><td class="td-phone">1-999-467-8648</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">SKYFALL</td><td>从高空坠落</td><td class="td-phone">1-999-759-3255</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">LIQUOR</td><td>醉酒模式</td><td class="td-phone">1-999-547-861</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">DEADEYE</td><td>瞄准时慢动作（可叠加4次）</td><td class="td-phone">1-999-332-3393</td><td class="td-cat"><span class="cat-player">玩家</span></td></tr>
+        <tr><td class="td-code">TOOLUP</td><td>获得全套武器弹药</td><td class="td-phone">1-999-866-587</td><td class="td-cat"><span class="cat-weapon">武器</span></td></tr>
+        <tr><td class="td-code">SKYDIVE</td><td>获得降落伞</td><td class="td-phone">1-999-759-3483</td><td class="td-cat"><span class="cat-weapon">武器</span></td></tr>
+        <tr><td class="td-code">INCENDIARY</td><td>烈焰子弹</td><td class="td-phone">1-999-462-363-4279</td><td class="td-cat"><span class="cat-weapon">武器</span></td></tr>
+        <tr><td class="td-code">HIGHEX</td><td>爆炸子弹</td><td class="td-phone">1-999-444-439</td><td class="td-cat"><span class="cat-weapon">武器</span></td></tr>
+        <tr><td class="td-code">HOTHANDS</td><td>爆炸近战攻击</td><td class="td-phone">1-999-4684-2637</td><td class="td-cat"><span class="cat-weapon">武器</span></td></tr>
+        <tr><td class="td-code">BUZZOFF</td><td>召唤秃鹰武装直升机</td><td class="td-phone">1-999-289-9633</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">RAPIDGT</td><td>召唤 Rapid GT 跑车</td><td class="td-phone">1-999-727-4348</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">COMET</td><td>召唤 Comet 彗星跑车</td><td class="td-phone">1-999-266-38</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">ROCKET</td><td>召唤 PCJ-600 摩托车</td><td class="td-phone">1-999-762-538</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">OFFROAD</td><td>召唤 Sanchez 越野摩托</td><td class="td-phone">1-999-633-7623</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">BANDIT</td><td>召唤 BMX 小轮车</td><td class="td-phone">1-999-226-348</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">BARNSTORM</td><td>召唤特技飞机</td><td class="td-phone">1-999-2276-78676</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">TRASHED</td><td>召唤垃圾车</td><td class="td-phone">1-999-872-433</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">VINEWOOD</td><td>召唤豪华加长轿车</td><td class="td-phone">1-999-846-39663</td><td class="td-cat"><span class="cat-vehicle">载具</span></td></tr>
+        <tr><td class="td-code">MAKEITRAIN</td><td>循环切换天气（8种）</td><td class="td-phone">1-999-625-348-7246</td><td class="td-cat"><span class="cat-world">世界</span></td></tr>
+        <tr><td class="td-code">FLOATER</td><td>月球低重力</td><td class="td-phone">1-999-356-2837</td><td class="td-cat"><span class="cat-world">世界</span></td></tr>
+        <tr><td class="td-code">SNOWDAY</td><td>车胎打滑（漂移模式）</td><td class="td-phone">1-999-766-9329</td><td class="td-cat"><span class="cat-world">世界</span></td></tr>
+        <tr><td class="td-code">SLOWMO</td><td>全局慢动作（可叠加3次）</td><td class="td-phone">1-999-756-966</td><td class="td-cat"><span class="cat-world">世界</span></td></tr>
+        <tr><td class="td-code">LAWYERUP</td><td>降低通缉等级（每次-1星）</td><td class="td-phone">1-999-529-93787</td><td class="td-cat"><span class="cat-wanted">通缉</span></td></tr>
+        <tr><td class="td-code">FUGITIVE</td><td>提升通缉等级（每次+1星）</td><td class="td-phone">1-999-3844-8483</td><td class="td-cat"><span class="cat-wanted">通缉</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p><em>GTA V</em> 侠盗猎车手5 · 故事模式作弊码完整收录 · PC版</p>
+  <p style="margin-top:8px;color:#3a4a5a;">仅适用于单人故事模式 · 多人在线模式使用作弊码将被封号</p>
+</footer>
+
+<script>
+// Fade-in on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+// Active nav highlight
+const navLinks = document.querySelectorAll('.nav a');
+const sections = ['howto','player','weapon','vehicle','world','wanted','quickref']
+  .map(id => document.getElementById(id)).filter(Boolean);
+
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
